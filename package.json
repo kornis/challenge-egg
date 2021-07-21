@@ -1,0 +1,20 @@
+{
+  "name": "challenge_egg",
+  "version": "1.0.0",
+  "description": "\"Challenge entrevista para puesto dev backend\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Federico Garcia",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mongodb": "^3.6.20",
+    "@types/node": "^16.4.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.0.1"
+  }
+}
