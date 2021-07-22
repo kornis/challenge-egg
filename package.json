@@ -4,8 +4,8 @@
   "description": "\"Challenge entrevista para puesto dev backend\"",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/app.js",
-    "dev": "nodemon ./dist/app.js",
+    "start": "tsc && node ./src/dist/api/app/app.js",
+    "dev": "nodemon ./src/dist/api/app/app.js",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
