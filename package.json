@@ -4,6 +4,9 @@
   "description": "\"Challenge entrevista para puesto dev backend\"",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node ./build/app.js",
+    "dev": "nodemon ./build/app.js",
+    "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Federico Garcia",
@@ -14,7 +17,9 @@
     "@types/node": "^16.4.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.0.1"
   }
 }
