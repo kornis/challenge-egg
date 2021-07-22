@@ -1,6 +1,5 @@
-import { MongoConnection, mongoUri } from "../mongodb/mongo";
-import { Child, User } from "../../domain/entities";
-import { classToPlain } from "class-transformer";
+import { Child, Credentials, User } from "../../domain/entities";
+import { classToPlain, plainToClass } from "class-transformer";
 import { connectDB } from "../utils";
 
 export async function createUser(payload: User) {
@@ -19,9 +18,21 @@ export async function updateUser(payload: User) {
   return await client.collection("users").updateOne(query, { $set: classToPlain(payload) });
 }
 
-export async function findUser(key: string) {
+export async function findUserById(_id: string): Promise<User | null> {
   const client = await connectDB("egg_challenge");
-  return await client.collection("users").findOne({ dni: key });
+  const user = await client.collection("users").findOne({ credentials: _id });
+  return user ? plainToClass(User, user) : null;
+}
+
+export async function findUserByDni(dni: string) {
+  const client = await connectDB("egg_challenge");
+  return await client.collection("users").findOne({ dni: dni });
+}
+
+export async function findUserByEmail(email: string): Promise<Credentials | null> {
+  const client = await connectDB("egg_challenge");
+  const userCredentials = await client.collection("user-credentials").findOne({ email: email });
+  return userCredentials ? plainToClass(Credentials, userCredentials) : null;
 }
 
 export async function createChild(payload: Child) {
@@ -35,4 +46,10 @@ export async function updateChild(payload: Child) {
     dni: payload.dni,
   };
   return await client.collection("children").updateOne(query, { $set: classToPlain(payload) });
+}
+
+export async function createCredentials(payload: Credentials) {
+  const client = await connectDB("egg_challenge");
+  await client.collection("user-credentials");
+  return await client.collection("user-credentials").insertOne(classToPlain(payload));
 }

@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import "reflect-metadata";
-import { userRoute } from "../routes";
+import { userRoute, indexRoute } from "../routes";
 class App {
   public app: express.Application;
 
@@ -19,6 +19,7 @@ class App {
   }
 
   routes() {
+    this.app.use(indexRoute);
     this.app.use("/user", userRoute);
   }
 

@@ -1,17 +1,15 @@
-import { ObjectId } from "mongodb";
+import { v4 as uuid } from "uuid";
 export class User {
+  _id: string = uuid();
   nombre: string;
   apellido: string;
   dni: number;
-  hijos: ObjectId[];
-  constructor(nombre: string, apellido: string, dni: number) {
+  credentials: string;
+  constructor(nombre: string, apellido: string, dni: number, credentials: string) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
-  }
-
-  agregarHijo(id_hijo: string) {
-    this.hijos.push(new ObjectId(id_hijo));
+    this.credentials = credentials;
   }
 }
 
@@ -19,9 +17,11 @@ export class Child {
   nombre: string;
   apellido: string;
   dni: number;
-  constructor(nombre: string, apellido: string, dni: number) {
+  fatherId: string;
+  constructor(nombre: string, apellido: string, dni: number, fatherId: string) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
+    this.fatherId = fatherId;
   }
 }
