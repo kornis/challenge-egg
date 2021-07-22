@@ -1,11 +1,13 @@
 import express from "express";
-
+import dotenv from "dotenv";
+import "reflect-metadata";
 class App {
   public app: express.Application;
 
   constructor() {
     this.app = express();
     this.config();
+    dotenv.config({ path: ".env" });
   }
 
   config() {
