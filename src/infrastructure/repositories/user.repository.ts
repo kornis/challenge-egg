@@ -1,7 +1,6 @@
 import { Credentials, User } from "../../domain/entities";
 import { classToPlain, plainToClass } from "class-transformer";
 import { connectDB } from "../utils";
-import { IChild } from "../../domain/interfaces";
 import { Db } from "mongodb";
 
 export async function createUser(payload: User) {
