@@ -49,7 +49,7 @@
         <li>dni: string</li>
     </ul>
     <li><strong>POST:</strong> /users/listChildren</li>
-    <li><strong>POST:</strong> /users/updateChild/:id <strong>[parametro :dni]</strong></li>
+    <li><strong>POST:</strong> /users/updateChild/:id <strong>[parametro :id]</strong></li>
     <ul>
         <li><strong>Body params:</strong></li>
         <li>nombre: string</li>
