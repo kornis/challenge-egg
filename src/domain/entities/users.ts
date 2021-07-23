@@ -1,27 +1,23 @@
 import { v4 as uuid } from "uuid";
 export class User {
-  _id: string = uuid();
   nombre: string;
   apellido: string;
   dni: number;
   credentials: string;
-  constructor(nombre: string, apellido: string, dni: number, credentials: string) {
+  isChild: boolean;
+  children: string[];
+  constructor(nombre: string, apellido: string, dni: number, credentials: string, isChild: boolean) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
     this.credentials = credentials;
+    this.isChild = isChild;
+    if (!this.isChild) {
+      this.children = [];
+    }
   }
-}
 
-export class Child {
-  nombre: string;
-  apellido: string;
-  dni: number;
-  fatherId: string;
-  constructor(nombre: string, apellido: string, dni: number, fatherId: string) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.dni = dni;
-    this.fatherId = fatherId;
+  addChildren(childid: string) {
+    this.children.push(childid);
   }
 }
