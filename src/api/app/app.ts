@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import "reflect-metadata";
 import { userRoute, indexRoute } from "../routes";
@@ -21,6 +21,7 @@ class App {
   routes() {
     this.app.use(indexRoute);
     this.app.use("/user", userRoute);
+    this.app.use("*", (req: Request, res: Response) => res.send("No autorizado"));
   }
 
   start() {
